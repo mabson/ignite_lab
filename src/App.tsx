@@ -17,7 +17,9 @@ function App() {
       {
         query: GET_LESSONS_QUERY
       }
-    )
+    ).then(response = > {
+     
+    })
   }, [])
 
   return (
