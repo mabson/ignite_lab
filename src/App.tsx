@@ -1,29 +1,27 @@
-import { gql } from "@apollo/client"
+import { gql, useQuery } from "@apollo/client"
 import { useEffect } from "react"
-import { client } from "./lib/apollo"
+import { Event } from "./pages/Event";
+
 
 const GET_LESSONS_QUERY = gql`
   query {
     lessons {
       id
       title
+      teacher {
+        name
+      }
     }
   }
 `
 
 function App() {
-  useEffect(() => {
-    client.query(
-      {
-        query: GET_LESSONS_QUERY
-      }
-    ).then(response = > {
-     
-    })
-  }, [])
+
+  const {data} = useQuery(GET_LESSONS_QUERY);
+  console.log(data)
 
   return (
-    <h1 className="">Hello World</h1>
+    <Event />
   )
 }
 
